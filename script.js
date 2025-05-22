@@ -1,19 +1,22 @@
-const salon = document.getElementById("salon");
+const stands = document.querySelectorAll('.stand');
+const popup = document.getElementById('popup');
+const firmaAdi = document.getElementById('firmaAdi');
+const firmaBilgi = document.getElementById('firmaBilgi');
 
-for (let i = 1; i <= 39; i++) {
-  const div = document.createElement("div");
-  div.className = "stand";
-  div.textContent = `Firma ${i}`;
-  div.dataset.firma = `Firma ${i}`;
-  div.dataset.info = `Firma ${i} hakkında bilgi buraya gelecek.`;
-  div.addEventListener("click", () => {
-    document.getElementById("firmaAdi").textContent = div.dataset.firma;
-    document.getElementById("firmaBilgi").textContent = div.dataset.info;
-    document.getElementById("popup").classList.remove("hidden");
+stands.forEach(stand => {
+  stand.style.backgroundColor = getRandomColor();
+  stand.addEventListener('click', () => {
+    firmaAdi.textContent = stand.dataset.firma;
+    firmaBilgi.textContent = stand.dataset.aciklama;
+    popup.classList.remove('hidden');
   });
-  salon.appendChild(div);
-}
+});
 
 function kapatPopup() {
-  document.getElementById("popup").classList.add("hidden");
+  popup.classList.add('hidden');
+}
+
+function getRandomColor() {
+  const colors = ['#3498db','#e67e22','#1abc9c','#9b59b6','#f39c12','#2ecc71','#e74c3c','#34495e','#16a085','#d35400'];
+  return colors[Math.floor(Math.random() * colors.length)];
 }
