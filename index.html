@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kariyer Günü Haritası</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Kariyer Günü Firma Haritası</h1>
+  <div class="salon">
+    <!-- Üst sıra -->
+    <div class="stand" style="grid-column: 1">Firma 1</div>
+    <div class="stand" style="grid-column: 2">Firma 2</div>
+    <div class="stand" style="grid-column: 3">Firma 3</div>
+    <div class="stand" style="grid-column: 4">Firma 4</div>
+    <div class="stand" style="grid-column: 5">Firma 5</div>
+    <div class="stand" style="grid-column: 6">Firma 6</div>
+    <div class="stand" style="grid-column: 7">Firma 7</div>
+    <div class="stand" style="grid-column: 8">Firma 8</div>
+    <div class="stand" style="grid-column: 9">Firma 9</div>
+    <div class="stand" style="grid-column: 10">Firma 10</div>
+    <div class="stand" style="grid-column: 11">Firma 11</div>
+    <div class="stand" style="grid-column: 12">Firma 12</div>
+    <div class="stand" style="grid-column: 13">Firma 13</div>
+
+    <!-- Sol sütun -->
+    <div class="stand" style="grid-column: 1; grid-row: 2">Firma 14</div>
+    <div class="stand" style="grid-column: 1; grid-row: 3">Firma 15</div>
+    <div class="stand" style="grid-column: 1; grid-row: 4">Firma 16</div>
+    <div class="stand" style="grid-column: 1; grid-row: 5">Firma 17</div>
+    <div class="stand" style="grid-column: 1; grid-row: 6">Firma 18</div>
+
+    <!-- Sağ sütun -->
+    <div class="stand" style="grid-column: 13; grid-row: 2">Firma 19</div>
+    <div class="stand" style="grid-column: 13; grid-row: 3">Firma 20</div>
+    <div class="stand" style="grid-column: 13; grid-row: 4">Firma 21</div>
+    <div class="stand" style="grid-column: 13; grid-row: 5">Firma 22</div>
+    <div class="stand" style="grid-column: 13; grid-row: 6">Firma 23</div>
+
+    <!-- Alt sıra -->
+    <div class="stand" style="grid-row: 7; grid-column: 1">Firma 24</div>
+    <div class="stand" style="grid-row: 7; grid-column: 2">Firma 25</div>
+    <div class="stand" style="grid-row: 7; grid-column: 3">Firma 26</div>
+    <div class="stand" style="grid-row: 7; grid-column: 4">Firma 27</div>
+    <div class="stand" style="grid-row: 7; grid-column: 5">Firma 28</div>
+    <div class="stand" style="grid-row: 7; grid-column: 6">Firma 29</div>
+    <div class="stand" style="grid-row: 7; grid-column: 7">Firma 30</div>
+    <div class="stand" style="grid-row: 7; grid-column: 8">Firma 31</div>
+    <div class="stand" style="grid-row: 7; grid-column: 9">Firma 32</div>
+    <div class="stand" style="grid-row: 7; grid-column: 10">Firma 33</div>
+    <div class="stand" style="grid-row: 7; grid-column: 11">Firma 34</div>
+    <div class="stand" style="grid-row: 7; grid-column: 12">Firma 35</div>
+    <div class="stand" style="grid-row: 7; grid-column: 13">Firma 36</div>
+
+    <!-- Orta iç bloklar -->
+    <div class="stand" style="grid-column: 4; grid-row: 3">Firma 37</div>
+    <div class="stand" style="grid-column: 5; grid-row: 3">Firma 38</div>
+    <div class="stand" style="grid-column: 6; grid-row: 3">Firma 39</div>
+  </div>
+
+  <div id="popup" class="popup hidden">
+    <h3 id="firmaAdi"></h3>
+    <p id="firmaBilgi"></p>
+    <button onclick="kapatPopup()">Kapat</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
