@@ -1,22 +1,16 @@
-const stands = document.querySelectorAll('.stand');
-const popup = document.getElementById('popup');
-const firmaAdi = document.getElementById('firmaAdi');
-const firmaBilgi = document.getElementById('firmaBilgi');
-
-stands.forEach(stand => {
-  stand.style.backgroundColor = getRandomColor();
+// Stantlara tıklanınca popup göster
+document.querySelectorAll('.stand').forEach((stand) => {
   stand.addEventListener('click', () => {
-    firmaAdi.textContent = stand.dataset.firma;
-    firmaBilgi.textContent = stand.dataset.aciklama;
-    popup.classList.remove('hidden');
+    const firma = stand.getAttribute('data-firma');
+    const aciklama = stand.getAttribute('data-aciklama');
+
+    document.getElementById('popup-title').textContent = firma;
+    document.getElementById('popup-description').textContent = aciklama;
+    document.getElementById('popup').classList.remove('hidden');
   });
 });
 
-function kapatPopup() {
-  popup.classList.add('hidden');
-}
-
-function getRandomColor() {
-  const colors = ['#3498db','#e67e22','#1abc9c','#9b59b6','#f39c12','#2ecc71','#e74c3c','#34495e','#16a085','#d35400'];
-  return colors[Math.floor(Math.random() * colors.length)];
+// Popup'ı kapatma fonksiyonu
+function closePopup() {
+  document.getElementById('popup').classList.add('hidden');
 }
