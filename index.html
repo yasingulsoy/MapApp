@@ -4,45 +4,257 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kariyer Günü Haritası</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f6fa;
+      color: #2c3e50;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .salon {
+      display: grid;
+      grid-template-columns: repeat(15, 1fr);
+      grid-auto-rows: 70px;
+      gap: 12px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+    }
+
+    .stand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #95a5a6;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      font-size: 10px;
+      text-align: center;
+      padding: 3px;
+      line-height: 1.1;
+    }
+
+    .stand:hover {
+      transform: scale(1.55);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .sahne-label {
+      position: absolute;
+      left: -80px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-size: 24px;
+      font-weight: bold;
+      color: #666;
+      letter-spacing: 3px;
+    }
+
+    .giris-section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px;
+  position: relative;
+  left: auto;
+  right: 0;
+  margin-left: auto;
+}
+
+
+
+    .arrow {
+      width: 0;
+      height: 0;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-right: 30px solid #333;
+    }
+
+    .giris-text {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+      letter-spacing: 2px;
+    }
+
+    .popup {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      max-width: 90%;
+      width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      z-index: 1000;
+      animation: fadeInUp 0.3s ease-out;
+    }
+
+    .popup.hidden {
+      display: none;
+    }
+
+    .popup h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    .popup button {
+      margin-top: 15px;
+      padding: 8px 12px;
+      background-color: #e74c3c;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .popup button:hover {
+      background-color: #c0392b;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateX(-50%) translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .salon {
+        grid-template-columns: 80px repeat(6, 80px) 80px;
+        grid-template-rows: repeat(12, 60px);
+      }
+
+      .stand {
+        font-size: 6px;
+        padding: 2px;
+      }
+    }
+  </style>
 </head>
 <body>
   <h1>Kariyer Günü Firma Haritası</h1>
-
+  
   <div class="salon">
     <div class="sahne-label">SAHNE</div>
+    
+    <!-- Üst sıra 1-10 -->
+    <div class="stand" style="grid-column: 2; grid-row: 1" data-firma="ÖRTEM ELEKTRONİK A.Ş" data-aciklama="Elektronik ve teknoloji şirketi - 3 ">1<br>ÖRTEM ELEKTRONİK A.Ş<br>3 </div>
+    <div class="stand" style="grid-column: 3; grid-row: 1" data-firma="SECURİTAS TEKNOLOJİ HİZMETLERİ TİCARET A.Ş" data-aciklama="Güvenlik teknolojileri - 3 ">2<br>SECURİTAS TEKNOLOJİ HİZMETLERİ TİCARET A.Ş<br>3 </div>
+    <div class="stand" style="grid-column: 4; grid-row: 1" data-firma="METROPOL KURUMSAL HİZMETLER A.Ş" data-aciklama="Kurumsal hizmetler - 3 ">3<br>METROPOL KURUMSAL HİZMETLER A.Ş<br>3 </div>
+    <div class="stand" style="grid-column: 5; grid-row: 1" data-firma="RASYONEL İNSAN KAYNAKLARI" data-aciklama="İnsan kaynakları danışmanlığı - 3 ">4<br>RASYONEL İNSAN KAYNAKLARI<br>3 </div>
+    <div class="stand" style="grid-column: 6; grid-row: 1" data-firma="BİMED TEKNİK ALETLER SAN. VE TİC. A.Ş" data-aciklama="Medikal teknoloji - 3 ">5<br>BİMED TEKNİK ALETLER SAN. VE TİC. A.Ş<br>3 </div>
+    <div class="stand" style="grid-column: 7; grid-row: 1" data-firma="PLUS İNSAN KAYNAKLARI" data-aciklama="İnsan kaynakları - 3 ">6<br>PLUS İNSAN KAYNAKLARI<br>3 </div>
+    <div class="stand" style="grid-column: 8; grid-row: 1" data-firma="FERİYE TURİZM İŞLETMELERİ TİCARET A.Ş" data-aciklama="Turizm işletmeleri - 3 ">7<br>FERİYE TURİZM İŞLETMELERİ TİCARET A.Ş<br>3 </div>
+    <div class="stand" style="grid-column: 9; grid-row: 1" data-firma="TÜRKMEDYA" data-aciklama="Medya şirketi - 3 ">8<br>TÜRKMEDYA<br>3 </div>
+    <div class="stand" style="grid-column: 10; grid-row: 1" data-firma="PROTEAM İNSAN KAYNAKLARI" data-aciklama="İnsan kaynakları - 3 ">9<br>PROTEAM İNSAN KAYNAKLARI<br>3 </div>
+    <div class="stand" style="grid-column: 11; grid-row: 1" data-firma="SMİLE HAİR CLİNİC" data-aciklama="Saç ekim kliniği - 3 ">10<br>SMİLE HAİR CLİNİC<br>3 </div>
 
-    <!-- Stantlar -->
-    <div class="stand" style="grid-column: 2; grid-row: 1" data-firma="ÖRTEM ELEKTRONİK A.Ş" data-aciklama="Elektronik ve teknoloji şirketi - 3">1<br>ÖRTEM ELEKTRONİK A.Ş<br>3</div>
-    <div class="stand" style="grid-column: 3; grid-row: 1" data-firma="ÖZEL BEYKENT OKULLARI" data-aciklama="Eğitim kurumu - 4">2<br>ÖZEL BEYKENT OKULLARI<br>4</div>
-    <div class="stand" style="grid-column: 4; grid-row: 1" data-firma="MEGASAN ELEKTRONİK" data-aciklama="Elektronik tedarikçisi - 2">3<br>MEGASAN ELEKTRONİK<br>2</div>
-    <div class="stand" style="grid-column: 5; grid-row: 1" data-firma="PERPA TİCARET MERKEZİ YÖNETİM KURULU BAŞKANLIĞI" data-aciklama="Ticaret merkezi - 2">4<br>PERPA TİCARET MERKEZİ<br>2</div>
-    <div class="stand" style="grid-column: 6; grid-row: 1" data-firma="ENDÜSTRİ RADYO" data-aciklama="Radyo ve medya - 2">5<br>ENDÜSTRİ RADYO<br>2</div>
-    <div class="stand" style="grid-column: 7; grid-row: 1" data-firma="TÜRK TELEKOM" data-aciklama="Telekomünikasyon - 4">6<br>TÜRK TELEKOM<br>4</div>
-    <div class="stand" style="grid-column: 8; grid-row: 1" data-firma="ŞİŞLİ MESLEKİ VE TEKNİK ANADOLU LİSESİ" data-aciklama="Eğitim kurumu - 2">7<br>ŞİŞLİ MTAL<br>2</div>
-    <div class="stand" style="grid-column: 9; grid-row: 1" data-firma="TURKCELL GLOBAL BİLGİ" data-aciklama="İletişim ve çağrı merkezi - 3">8<br>TURKCELL GLOBAL BİLGİ<br>3</div>
-    <div class="stand" style="grid-column: 10; grid-row: 1" data-firma="ŞİŞLİ İLÇE MİLLİ EĞİTİM MÜDÜRLÜĞÜ" data-aciklama="Eğitim kurumu - 2">9<br>ŞİŞLİ MEM<br>2</div>
-    <div class="stand" style="grid-column: 11; grid-row: 1" data-firma="BİLGE ADAM" data-aciklama="Bilişim ve yazılım eğitimi - 2">10<br>BİLGE ADAM<br>2</div>
-    <div class="stand" style="grid-column: 12; grid-row: 1" data-firma="İNTERNET HABER" data-aciklama="Dijital medya ve haber - 2">11<br>İNTERNET HABER<br>2</div>
-    <div class="stand" style="grid-column: 13; grid-row: 1" data-firma="EMNİYET TEŞKİLATI (ŞİŞLİ İLÇE EMNİYET MÜDÜRLÜĞÜ)" data-aciklama="Kamu güvenliği - 2">12<br>ŞİŞLİ EMNİYET<br>2</div>
-    <div class="stand" style="grid-column: 14; grid-row: 1" data-firma="MEZUN ÖĞRENCİLERİMİZ" data-aciklama="Eski mezunlar ile tanışma - 3">13<br>MEZUNLAR<br>3</div>
-    <div class="stand" style="grid-column: 15; grid-row: 1" data-firma="İŞKUR" data-aciklama="İş ve işçi bulma kurumu - 2">14<br>İŞKUR<br>2</div>
-    <div class="stand" style="grid-column: 8; grid-row: 2" data-firma="İBB KADIN VE AİLE HİZMETLERİ MÜDÜRLÜĞÜ" data-aciklama="Sosyal hizmetler - 2">15<br>İBB KADIN AİLE<br>2</div>
-    <div class="stand" style="grid-column: 9; grid-row: 2" data-firma="REHBERLİK SERVİSİ" data-aciklama="Danışmanlık ve rehberlik - 1">16<br>REHBERLİK SERVİSİ<br>1</div>
+    <!-- Sağ kenar 11-14 -->
+    <div class="stand" style="grid-column: 12; grid-row: 1" data-firma="ALBARAKA" data-aciklama="Bankacılık - 3 ">11<br>ALBARAKA<br>3 </div>
+    <div class="stand" style="grid-column: 12; grid-row: 2" data-firma="UNİARCH KLİNİK MÜHENDİSLİK" data-aciklama="Klinik mühendislik - 4 ">12<br>UNİARCH KLİNİK MÜHENDİSLİK<br>4 </div>
+    <div class="stand" style="grid-column: 12; grid-row: 3" data-firma="A.D.İ.F ARAŞTIRMA MERKEZİ" data-aciklama="Araştırma merkezi - 3 ">13<br>A.D.İ.F ARAŞTIRMA MERKEZİ<br>3 </div>
+    <div class="stand" style="grid-column: 12; grid-row: 4" data-firma="ADIL FİLİK GROUP" data-aciklama="Grup şirketi - 3 ">14<br>ADIL FİLİK GROUP<br>3 </div>
 
+    <!-- Sol kenar 41-46 (yukarıdan aşağıya) -->
+    <div class="stand" style="grid-column: 1; grid-row: 2" data-firma="INVEST GROUP" data-aciklama="Yatırım grubu - 4 ">46<br>INVEST GROUP<br>4 </div>
+    <div class="stand" style="grid-column: 1; grid-row: 3" data-firma="MORTEN BİLGİ VE İLETİŞİM HİZ. A.Ş" data-aciklama="Bilgi işlem - 4 ">45<br>MORTEN BİLGİ VE İLETİŞİM HİZ. A.Ş<br>4 </div>
+    <div class="stand" style="grid-column: 1; grid-row: 4" data-firma="EROL GRUP - CEO TEKMER" data-aciklama="Teknoloji merkezi - 2 ">44<br>EROL GRUP - CEO TEKMER<br>2 </div>
+    <div class="stand" style="grid-column: 1; grid-row: 5" data-firma="AYKANLAR GIDA SAN" data-aciklama="Gıda sanayi - 2 ">43<br>AYKANLAR GIDA SAN<br>2 </div>
+    <div class="stand" style="grid-column: 1; grid-row: 6" data-firma="GAME TABLE" data-aciklama="Oyun masaları - 2 ">42<br>GAME TABLE<br>2 </div>
+    <div class="stand" style="grid-column: 1; grid-row: 7" data-firma="ANTİME" data-aciklama="Teknoloji - 2 ">41<br>ANTİME<br>2 </div>
+
+    <!-- Orta üst sıra 21-30 -->
+    <div class="stand" style="grid-column: 2; grid-row: 3" data-firma="İBB" data-aciklama="İstanbul Büyükşehir Belediyesi - 2 ">21<br>İBB<br>2 </div>
+    <div class="stand" style="grid-column: 3; grid-row: 3" data-firma="İSTANBUL ECZACILAR KOOPERATI" data-aciklama="Eczacılar kooperatifi - 2 ">22<br>İSTANBUL ECZACILAR KOOPERATI<br>2 </div>
+    <div class="stand" style="grid-column: 4; grid-row: 3" data-firma="SOMERSET MASLAK İSTANBUL" data-aciklama="Otel işletmeciliği - 2 ">23<br>SOMERSET MASLAK İSTANBUL<br>2 </div>
+    <div class="stand" style="grid-column: 5; grid-row: 3" data-firma="YOR TEKNOLOJİ GELİŞTİRME" data-aciklama="Teknoloji geliştirme - 2 ">24<br>YOR TEKNOLOJİ GELİŞTİRME<br>2 </div>
+    <div class="stand" style="grid-column: 6; grid-row: 3" data-firma="MAGESBURGER SİGORTA" data-aciklama="Sigorta şirketi - 2 ">25<br>MAGESBURGER SİGORTA<br>2 </div>
+    <div class="stand" style="grid-column: 7; grid-row: 3" data-firma="HEDEF GRUP" data-aciklama="Grup şirketi - 2 ">26<br>HEDEF GRUP<br>2 </div>
+    <div class="stand" style="grid-column: 8; grid-row: 3" data-firma="RİCOH TURKEY" data-aciklama="Teknoloji çözümleri - 2 ">27<br>RICOH TURKEY<br>2 </div>
+    <div class="stand" style="grid-column: 9; grid-row: 3" data-firma="REMER ASİSTANCE" data-aciklama="Asistans hizmetleri - 2 ">28<br>REMER ASİSTANCE<br>2 </div>
+    <div class="stand" style="grid-column: 10; grid-row: 3" data-firma="SI PLUS YATIRIM HOLDİNG" data-aciklama="Yatırım holding - 2 ">29<br>SI PLUS YATIRIM HOLDİNG<br>2 </div>
+    <div class="stand" style="grid-column: 11; grid-row: 3" data-firma="BAĞCILAR BELEDİYESİ" data-aciklama="Belediye hizmetleri - 2 ">30<br>BAĞCILAR BELEDİYESİ<br>2 </div>
+
+    <!-- Orta alt sıra 31-40 (sağdan sola) -->
+    <div class="stand" style="grid-column: 11; grid-row: 5" data-firma="BAYRAMPAŞA BELEDİYESİ İSTİHDAM MERKEZİ" data-aciklama="İstihdam merkezi - 3 ">31<br>BAYRAMPAŞA BELEDİYESİ İSTİHDAM MERKEZİ<br>3 </div>
+    <div class="stand" style="grid-column: 10; grid-row: 5" data-firma="İŞKUR" data-aciklama="İş kurumu - 1 ">32<br>İŞKUR<br>1 </div>
+    <div class="stand" style="grid-column: 9; grid-row: 5" data-firma="KAR GRUP" data-aciklama="Grup şirketi - 2 ">33<br>KAR GRUP<br>2 </div>
+    <div class="stand" style="grid-column: 8; grid-row: 5" data-firma="SIBER İLERİ ÜRETİM SİSTEMLERİ" data-aciklama="Üretim sistemleri - 2 ">34<br>SIBER İLERİ ÜRETİM SİSTEMLERİ<br>2 </div>
+    <div class="stand" style="grid-column: 7; grid-row: 5" data-firma="SYL SİGORTA" data-aciklama="Sigorta şirketi - 2 ">35<br>SYL SİGORTA<br>2 </div>
+    <div class="stand" style="grid-column: 6; grid-row: 5" data-firma="FLO GROUP" data-aciklama="Ayakkabı perakende - 2 ">36<br>FLO GROUP<br>2 </div>
+    <div class="stand" style="grid-column: 5; grid-row: 5" data-firma="ELEMAN.NET" data-aciklama="İş bulma platformu - 2 ">37<br>ELEMAN.NET<br>2 </div>
+    <div class="stand" style="grid-column: 4; grid-row: 5" data-firma="TRİMLİNE İNTERİOR" data-aciklama="İç mekan tasarım - 2 ">38<br>TRİMLİNE İNTERİOR<br>2 </div>
+    <div class="stand" style="grid-column: 3; grid-row: 5" data-firma="CARREFOURSA" data-aciklama="Perakende zinciri - 2 ">39<br>CARREFOURSA<br>2 </div>
+    <div class="stand" style="grid-column: 2; grid-row: 5" data-firma="RASYONEL KURUMSAL DANIŞMANLIK" data-aciklama="Kurumsal danışmanlık - 2 ">40<br>RASYONEL KURUMSAL DANIŞMANLIK<br>2 </div>
+
+    <!-- Alt sıra 15-20 (sağdan sola) -->
+    <div class="stand" style="grid-column: 11; grid-row: 7" data-firma="CLR İPEKYOLU LOJİSTİK VE TİCARET A.Ş" data-aciklama="Lojistik ve ticaret - 3 ">15<br>CLR İPEKYOLU LOJİSTİK VE TİCARET A.Ş<br>3 </div>
+    <div class="stand" style="grid-column: 10; grid-row: 7" data-firma="GOLDEN GATEWAY HOLDİNG" data-aciklama="Holding şirketi - 3 ">16<br>GOLDEN GATEWAY HOLDİNG<br>3 </div>
+    <div class="stand" style="grid-column: 9; grid-row: 7" data-firma="İNDTEX" data-aciklama="Tekstil şirketi">17<br>İNDTEX<br>3 </div>
+    <div class="stand" style="grid-column: 8; grid-row: 7" data-firma="GARANTİ BBVA EMEKLİLİK VE HAYAT A.Ş" data-aciklama="Emeklilik ve hayat sigortası - 4 ">18<br>GARANTİ BBVA EMEKLİLİK VE HAYAT A.ŞH</div>
+    <div class="stand" style="grid-column: 7; grid-row: 7" data-firma="OFTON" data-aciklama="Teknoloji şirketi">19<br>OFTON<br>4 </div>
+    <div class="stand" style="grid-column: 6; grid-row: 7" data-firma="AKRO HOLDİNG" data-aciklama="Holding şirketi">20<br>AKRO HOLDİNG<br>4 </div>
   </div>
 
   <div class="giris-section">
-    <div class="giris-text">GİRİŞ</div>
     <div class="arrow"></div>
+    <div class="arrow"></div>
+    <div class="arrow"></div>
+    <div class="giris-text">GİRİŞ</div>
   </div>
 
-  <div class="popup hidden" id="popup">
-    <h3 id="popup-title"></h3>
-    <p id="popup-description"></p>
-    <button onclick="closePopup()">Kapat</button>
+  <div id="popup" class="popup hidden">
+    <h3 id="firmaAdi"></h3>
+    <p id="firmaBilgi"></p>
+    <button onclick="kapatPopup()">Kapat</button>
   </div>
 
-  <script src="js.js"></script>
+  <script>
+    const stands = document.querySelectorAll('.stand');
+    const popup = document.getElementById('popup');
+    const firmaAdi = document.getElementById('firmaAdi');
+    const firmaBilgi = document.getElementById('firmaBilgi');
+
+    stands.forEach(stand => {
+      stand.style.backgroundColor = getRandomColor();
+      stand.addEventListener('click', () => {
+        firmaAdi.textContent = stand.dataset.firma;
+        firmaBilgi.textContent = stand.dataset.aciklama;
+        popup.classList.remove('hidden');
+      });
+    });
+
+    function kapatPopup() {
+      popup.classList.add('hidden');
+    }
+
+    function getRandomColor() {
+      const colors = ['#3498db','#e67e22','#1abc9c','#9b59b6','#f39c12','#2ecc71','#e74c3c','#34495e','#16a085','#d35400'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
 </body>
 </html>
