@@ -44,11 +44,14 @@
       text-align: center;
       padding: 3px;
       line-height: 1.1;
+      user-select: none;
     }
 
     .stand:hover {
       transform: scale(1.55);
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 10;
+      position: relative;
     }
 
     .sahne-label {
@@ -63,18 +66,16 @@
     }
 
     .giris-section {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 20px;
-  gap: 20px;
-  position: relative;
-  left: auto;
-  right: 0;
-  margin-left: auto;
-}
-
-
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 20px;
+      gap: 20px;
+      position: relative;
+      left: auto;
+      right: 0;
+      margin-left: auto;
+    }
 
     .arrow {
       width: 0;
@@ -116,6 +117,12 @@
       color: #2c3e50;
     }
 
+    .popup p {
+      white-space: pre-line;
+      color: #444;
+      font-size: 14px;
+    }
+
     .popup button {
       margin-top: 15px;
       padding: 8px 12px;
@@ -124,6 +131,7 @@
       color: white;
       border-radius: 8px;
       cursor: pointer;
+      font-size: 14px;
     }
 
     .popup button:hover {
@@ -235,26 +243,30 @@
   <script>
     const stands = document.querySelectorAll('.stand');
     const popup = document.getElementById('popup');
-    const firmaAdi = document.getElementById('firmaAdi');
-    const firmaBilgi = document.getElementById('firmaBilgi');
+    const popupTitle = document.getElementById('popup-title');
+    const popupDesc = document.getElementById('popup-description');
+    const popupClose = document.getElementById('popup-close');
 
     stands.forEach(stand => {
-      stand.style.backgroundColor = getRandomColor();
       stand.addEventListener('click', () => {
-        firmaAdi.textContent = stand.dataset.firma;
-        firmaBilgi.textContent = stand.dataset.aciklama;
+        const firma = stand.getAttribute('data-firma');
+        const aciklama = stand.getAttribute('data-aciklama');
+        popupTitle.textContent = firma;
+        popupDesc.textContent = aciklama;
         popup.classList.remove('hidden');
       });
     });
 
-    function kapatPopup() {
+    popupClose.addEventListener('click', () => {
       popup.classList.add('hidden');
-    }
+    });
 
-    function getRandomColor() {
-      const colors = ['#3498db','#e67e22','#1abc9c','#9b59b6','#f39c12','#2ecc71','#e74c3c','#34495e','#16a085','#d35400'];
-      return colors[Math.floor(Math.random() * colors.length)];
-    }
+    // Popup dışına tıklayınca kapatma
+    window.addEventListener('click', (e) => {
+      if (!popup.classList.contains('hidden') && !popup.contains(e.target) && ![...stands].some(s => s.contains(e.target))) {
+        popup.classList.add('hidden');
+      }
+    });
   </script>
 </body>
 </html>
