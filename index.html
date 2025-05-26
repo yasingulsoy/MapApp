@@ -44,14 +44,11 @@
       text-align: center;
       padding: 3px;
       line-height: 1.1;
-      user-select: none;
     }
 
     .stand:hover {
       transform: scale(1.55);
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 10;
-      position: relative;
     }
 
     .sahne-label {
@@ -66,16 +63,18 @@
     }
 
     .giris-section {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      margin-top: 20px;
-      gap: 20px;
-      position: relative;
-      left: auto;
-      right: 0;
-      margin-left: auto;
-    }
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px;
+  position: relative;
+  left: auto;
+  right: 0;
+  margin-left: auto;
+}
+
+
 
     .arrow {
       width: 0;
@@ -117,12 +116,6 @@
       color: #2c3e50;
     }
 
-    .popup p {
-      white-space: pre-line;
-      color: #444;
-      font-size: 14px;
-    }
-
     .popup button {
       margin-top: 15px;
       padding: 8px 12px;
@@ -131,7 +124,6 @@
       color: white;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 14px;
     }
 
     .popup button:hover {
@@ -169,7 +161,7 @@
     <div class="sahne-label">SAHNE</div>
     
     <!-- Üst sıra 1-10 -->
-    <div class="stand" style="grid-column: 2; grid-row: 1" data-firma="ÖRTEM ELEKTRONİK A.Ş" data-aciklama="Elektronik ve Teknoloji Şirketi">ÖRTEM ELEKTRONİK A.Ş<br>3 </div>
+    <div class="stand" style="grid-column: 2; grid-row: 1" data-firma="ÖRTEM ELEKTRONİK A.Ş" data-aciklama="Elektronik ve teknoloji şirketi - 3 ">1<br>ÖRTEM ELEKTRONİK A.Ş<br>3 </div>
     <div class="stand" style="grid-column: 3; grid-row: 1" data-firma="SECURİTAS TEKNOLOJİ HİZMETLERİ TİCARET A.Ş" data-aciklama="Güvenlik teknolojileri - 3 ">2<br>SECURİTAS TEKNOLOJİ HİZMETLERİ TİCARET A.Ş<br>3 </div>
     <div class="stand" style="grid-column: 4; grid-row: 1" data-firma="METROPOL KURUMSAL HİZMETLER A.Ş" data-aciklama="Kurumsal hizmetler - 3 ">3<br>METROPOL KURUMSAL HİZMETLER A.Ş<br>3 </div>
     <div class="stand" style="grid-column: 5; grid-row: 1" data-firma="RASYONEL İNSAN KAYNAKLARI" data-aciklama="İnsan kaynakları danışmanlığı - 3 ">4<br>RASYONEL İNSAN KAYNAKLARI<br>3 </div>
@@ -243,30 +235,26 @@
   <script>
     const stands = document.querySelectorAll('.stand');
     const popup = document.getElementById('popup');
-    const popupTitle = document.getElementById('popup-title');
-    const popupDesc = document.getElementById('popup-description');
-    const popupClose = document.getElementById('popup-close');
+    const firmaAdi = document.getElementById('firmaAdi');
+    const firmaBilgi = document.getElementById('firmaBilgi');
 
     stands.forEach(stand => {
+      stand.style.backgroundColor = getRandomColor();
       stand.addEventListener('click', () => {
-        const firma = stand.getAttribute('data-firma');
-        const aciklama = stand.getAttribute('data-aciklama');
-        popupTitle.textContent = firma;
-        popupDesc.textContent = aciklama;
+        firmaAdi.textContent = stand.dataset.firma;
+        firmaBilgi.textContent = stand.dataset.aciklama;
         popup.classList.remove('hidden');
       });
     });
 
-    popupClose.addEventListener('click', () => {
+    function kapatPopup() {
       popup.classList.add('hidden');
-    });
+    }
 
-    // Popup dışına tıklayınca kapatma
-    window.addEventListener('click', (e) => {
-      if (!popup.classList.contains('hidden') && !popup.contains(e.target) && ![...stands].some(s => s.contains(e.target))) {
-        popup.classList.add('hidden');
-      }
-    });
+    function getRandomColor() {
+      const colors = ['#3498db','#e67e22','#1abc9c','#9b59b6','#f39c12','#2ecc71','#e74c3c','#34495e','#16a085','#d35400'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
   </script>
 </body>
 </html>
